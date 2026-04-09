@@ -8,6 +8,10 @@ Rails.application.routes.draw do
   resources :hotels do
     resources :users, only: [ :new, :create ]
   end
+  resources :rooms
+  resources :reservations
+  resources :payments
+  resources :guests
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

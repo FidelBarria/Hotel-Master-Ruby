@@ -1,0 +1,31 @@
+<%= form_with model: @room, local: true do |form| %>
+    <div class="field">
+        <%= form.label :hotel_id %>
+        <%= form.select :hotel_id, Hotel.all.map { |h| [h.name, h.id] } %>
+    </div>
+    <div class="field">
+        <%= form.label :room_type %>
+        <%= form.text_field :room_type %>
+    </div>
+    <div class="field">
+        <%= form.label :room_number %>
+        <%= form.text_field :room_number %>
+    </div>
+    <div class="field">
+        <%= form.label :status %>
+        <%= form.text_field :status %>
+    </div>
+    <div class="field">
+        <%= form.label :price_per_night %>
+        <%= form.text_field :price_per_night %>
+    </div> 
+    <div class="field">
+        <%= form.label :description %>
+        <%= form.text_area :description %>
+    </div>
+    <div class="field">
+        <%= form.label :capacity %>
+        <%= form.text_field :capacity %>
+    </div>
+    <%= form.submit "Criar Quarto" %>
+<% end %>
