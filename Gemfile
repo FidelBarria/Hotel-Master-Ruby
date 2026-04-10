@@ -1,5 +1,7 @@
 source "https://rubygems.org"
 
+# pundit
+gem "pundit"
 # devise
 gem "devise"
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_04_09_192532) do
+ActiveRecord::Schema[8.1].define(version: 2026_04_10_170706) do
   create_table "guests", force: :cascade do |t|
     t.string "address"
     t.string "city"
@@ -71,7 +71,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_04_09_192532) do
     t.string "description"
     t.integer "hotel_id"
     t.integer "housekeeping_status", default: 0
-    t.integer "occupancy_status"
+    t.integer "occupancy_status", default: 0
     t.decimal "price_per_night"
     t.string "room_number"
     t.integer "room_type"

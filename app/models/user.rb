@@ -4,5 +4,5 @@ class User < ApplicationRecord
   belongs_to :hotel
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  enum :role, { admin: 0, supervisor: 1, operator: 2 }
+  enum :role, { admin: 0, supervisor: 1, operador: 2 }
 end

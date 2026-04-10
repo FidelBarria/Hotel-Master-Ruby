@@ -1,3 +1,7 @@
 <%= turbo_stream.replace "flash" do %>
   <div class="notice"><%= flash[:notice] %></div>
 <% end %>
+
+<%= turbo_stream.replace @room do %>
+  <%= render @room %>
+<% end %>

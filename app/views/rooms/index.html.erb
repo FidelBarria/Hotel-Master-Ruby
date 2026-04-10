@@ -1,38 +1,32 @@
-<h1>Governança</h1>
+
 <div class="flash">
 </div>
 
-<%=link_to "Novo Quarto", new_room_path%>
-
-<% @rooms.each do |room| %>
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th scope="col">Hotel</th>
-        <th scope="col">Numero do Quarto</th>
-        <th scope="col">Tipo do Quarto</th>
-        <th scope="col">Status</th>
-        <th scope="col">Status de Governança</th>
-        <th scope="col">Preço por Noite</th>
-        <th scope="col">Descrição</th>
-        <th scope="col">Capacidade</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><%= room.hotel.name %></td>
-        <td><%= room.room_number %></td>
-        <td><%= room.room_type %></td>
-        <td><%= room.occupancy_status %></td>
-        <%= form_with model: room, data: {turbo_stream: true} do |form| %>
-          <td>
-            <%= form.select :housekeeping_status, Room.housekeeping_statuses.keys, {}, onchange: "this.form.requestSubmit()" %>
-          </td>
+<div class="card m-3 bg-light shadow">
+  <div class="card-body">
+    <table class="table table-striped">
+      <h5 class="card-title text-center">GOVERNANÇA</h5>
+      <thead>
+        <tr>
+          <th scope="col">Hotel</th>
+          <th scope="col">Numero do Quarto</th>
+          <th scope="col">Tipo do Quarto</th>
+          <th scope="col">Status</th>
+          <th scope="col">Status de Governança</th>
+          <th scope="col">Preço por Noite</th>
+          <th scope="col">Descrição</th>
+          <th scope="col">Capacidade</th>
+          <%if policy(:room).update? || policy(:room).destroy? %>
+          <th scope="col">Ações</th>
+          <%end%>
+        </tr>
+      </thead>
+      <tbody>
+        <% @rooms.each do |room| %>
+          <%= render "room", room: room %>
         <% end %>
-        <td><%= room.price_per_night %></td>
-        <td><%= room.description %></td>
-        <td><%= room.capacity %></td>
-      </tr>
-    </tbody>
-  </table>
-<% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+

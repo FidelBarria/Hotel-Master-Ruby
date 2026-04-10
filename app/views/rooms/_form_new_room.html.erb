@@ -1,7 +1,6 @@
 <%= form_with model: @room, local: true do |form| %>
     <div class="field">
-        <%= form.label :hotel_id %>
-        <%= form.select :hotel_id, Hotel.all.map { |h| [h.name, h.id] } %>
+        <%= form.number_field :hotel_id, value: current_user.hotel_id, readonly: true, :hidden => true %>
     </div>
     <div class="field">
         <%= form.label :room_type %>

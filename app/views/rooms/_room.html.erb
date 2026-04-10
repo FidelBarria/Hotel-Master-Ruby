@@ -1,0 +1,27 @@
+  <tr id="<%= dom_id(room) %>" class="<%= occupancy_status_class(room.occupancy_status) %>">
+    <td><%= room.hotel.name %></td>
+    <td><%= room.room_number %></td>
+    <td><%= room.room_type %></td>
+
+    <td id="occupancy_status" class="<%= occupancy_status_class(room.occupancy_status) %>">
+      <%= room.occupancy_status %>
+    </td>
+
+    <td>
+    <%= form_with model: room do |form| %>
+      <%= form.select :housekeeping_status, Room.housekeeping_statuses.keys, {}, 
+        class: "form-select #{housekeeping_status_class(room.housekeeping_status)}",
+        onchange: "this.form.requestSubmit()" %>
+    <% end %>
+    </td>
+
+    <td><%= room.price_per_night %></td>
+    <td><%= room.description %></td>
+    <td><%= room.capacity %></td>
+    <%if policy(:room).update? || policy(:room).destroy? %>
+    <td>
+      <%= link_to "Editar", edit_room_path(room), class: "btn btn-sm btn-primary" %>
+        <%= link_to "Excluir", room_path(room), data: { turbo_method: :delete, turbo_confirm: "Tem certeza?" }, class: "btn btn-sm btn-danger" %>
+    </td>
+    <%end%>
+  </tr>
