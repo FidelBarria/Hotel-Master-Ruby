@@ -3,28 +3,26 @@
         <%= form.number_field :hotel_id, value: current_user.hotel_id, readonly: true, :hidden => true %>
     </div>
     <div class="field">
-        <%= form.label :room_type %>
-        <%= form.text_field :room_type %>
+        <%= form.label :room_type, class: "form-label" %>
+        <%= form.text_field :room_type, class: "form-control mb-3", placeholder: "Tipo do Quarto" %>
     </div>
     <div class="field">
-        <%= form.label :room_number %>
-        <%= form.text_field :room_number %>
+        <%= form.label :room_number, class: "form-label" %>
+        <%= form.text_field :room_number, class: "form-control mb-3", placeholder: "Número do Quarto" %>
     </div>
     <div class="field">
-        <%= form.label :status %>
-        <%= form.text_field :status %>
-    </div>
-    <div class="field">
-        <%= form.label :price_per_night %>
-        <%= form.text_field :price_per_night %>
+        <%= form.label :price_per_night, class: "form-label" %>
+        <%= form.text_field :price_per_night, class: "form-control mb-3", placeholder: "Preço por Noite" %>
     </div> 
     <div class="field">
-        <%= form.label :description %>
-        <%= form.text_area :description %>
+        <%= form.label :description, class: "form-label" %>
+        <%= form.text_area :description, class: "form-control mb-3", placeholder: "Descrição" %>
     </div>
     <div class="field">
-        <%= form.label :capacity %>
-        <%= form.text_field :capacity %>
+        <%= form.label :capacity, class: "form-label" %>
+        <%= form.text_field :capacity, class: "form-control mb-3", placeholder: "Capacidade"  %>
     </div>
-    <%= form.submit "Criar Quarto" %>
+    <div class="justify-content-center d-flex">
+    <%= form.submit "Criar Quarto", class: "btn btn-primary", data: { bs_dismiss: "modal" } %>
+    </div>
 <% end %>

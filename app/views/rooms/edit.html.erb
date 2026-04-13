@@ -1,3 +1,8 @@
-<h1>Editar Quarto</h1>
 
-<%= render "form_new_room", room: @room %>
+<%= turbo_frame_tag "new_edit_room" do %><div class="card m-3 radius-10 shadow">
+        <div class="card-body">
+            <h5 class="card-title">Editar Quarto</h5>
+            <%= render 'form_new_room' %>
+        </div>
+    </div>
+<% end %>
