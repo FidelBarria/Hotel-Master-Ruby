@@ -2,8 +2,37 @@
 <div class="flash">
 </div>
 
+
+
 <div class="card m-3 bg-light shadow">
   <div class="card-body">
+    <p class="d-inline-flex gap-1">
+      <a class="btn btn-primary" data-bs-toggle="collapse" href="#quartos" role="button" >
+        Quartos
+      </a>
+      <a class="btn btn-primary" data-bs-toggle="collapse" href="#governanca" role="button">
+        Governança
+      </a>
+    </p>
+    <div class="collapse" id="quartos">
+      <div class="card">
+          <div class="btn-group" role="group" aria-label="Basic example">
+            <%= link_to "Todos", rooms_path, class: "btn btn-primary" %>
+            <%= link_to "DXKN", rooms_path(room_type: "DXKN"), class: "btn btn-primary" %>
+            <%= link_to "SUKN", rooms_path(room_type: "SUKN"), class: "btn btn-primary" %>
+          </div>
+      </div>
+    </div>
+    <div class="collapse" id="governanca">
+      <div class="card">
+          <div class="btn-group" role="group" aria-label="Basic example">
+            <%= link_to "Todos", rooms_path, class: "btn btn-primary" %>
+            <%= link_to "sujo", rooms_path(housekeeping_status: "sujo"), class: "btn btn-primary" %>
+            <%= link_to "limpo", rooms_path(housekeeping_status: "limpo"), class: "btn btn-primary" %>
+            <%= link_to "liberado", rooms_path(housekeeping_status: "liberado"), class: "btn btn-primary" %>
+          </div>
+      </div>
+    </div>
     <table class="table table-striped">
       <h5 class="card-title text-center">GOVERNANÇA</h5>
       <thead>
@@ -30,20 +59,4 @@
   </div>
 </div>
 
-<%= button_to "modal", new_room_path, data: { bs_toggle: "modal", bs_target: "#exampleModal", turbo_frame: "new_edit_room"  } %>
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <%= turbo_frame_tag "new_edit_room" %>
-      </div>
-    </div>
-  </div>
-</div>
 

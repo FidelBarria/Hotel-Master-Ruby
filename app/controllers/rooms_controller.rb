@@ -4,6 +4,9 @@ class RoomsController < ApplicationController
   def index
     authorize :room
     @rooms = current_user.hotel.room
+    @rooms = @rooms.where(room_type: params[:room_type]) if params[:room_type].present?
+    @rooms = @rooms.where(occupancy_status: params[:occupancy_status]) if params[:occupancy_status].present?
+    @rooms = @rooms.where(housekeeping_status: params[:housekeeping_status]) if params[:housekeeping_status].present?
   end
 
   def new

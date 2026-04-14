@@ -12,7 +12,7 @@
           </a>
           <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
             <li><%= link_to "Quartos", rooms_path, class: "dropdown-item" %></li>
-            <li><%= link_to "Adicionar Quarto", new_room_path, class: "dropdown-item" %></li>
+            <li><%= link_to "Adicionar Quarto", new_room_path, class: "dropdown-item", data: { turbo_frame: "new_room" } %></li>
           </ul>
         </li>
       </ul>

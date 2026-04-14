@@ -20,8 +20,9 @@
     <td><%= room.capacity %></td>
     <%if policy(:room).update? || policy(:room).destroy? %>
     <td>
-      <%= link_to "Editar", edit_room_path(room), class: "btn btn-sm btn-primary" %>
+      <%= link_to "Editar", edit_room_path(room), class: "btn btn-sm btn-primary", data: { turbo_frame: "edit_room" } %>
         <%= link_to "Excluir", room_path(room), data: { turbo_method: :delete, turbo_confirm: "Tem certeza?" }, class: "btn btn-sm btn-danger" %>
     </td>
     <%end%>
   </tr>
+
