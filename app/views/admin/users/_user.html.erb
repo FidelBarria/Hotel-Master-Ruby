@@ -1,0 +1,34 @@
+<%= form_with(model: [:admin, @user], local: true) do |f| %>
+    <div>
+        <%= f.number_field :hotel_id, value: current_user.hotel_id, readonly: true, :hidden => true %>
+    </div>
+    <div>
+        <%= f.label :email, class: "form-label" %><br />
+        <%= f.email_field :email, class: "form-control", autofocus: true %>
+    </div>
+
+    <div>
+        <%= f.label :password, class: "form-label" %><br />
+        <%= f.password_field :password, class: "form-control" %>
+    </div>
+
+    <div>
+        <%= f.label :password_confirmation, class: "form-label" %><br />
+        <%= f.password_field :password_confirmation, class: "form-control" %>
+    </div>
+    
+    <div>
+        <%= f.label :role, "Selecione o cargo: ", class: "form-label" %>
+        <br>
+        <%= f.radio_button :role, "operador", class: "form-check-input" %>
+        <%= f.label :role, "Operador", class: "form-check-label" %>
+        <%= f.radio_button :role, "supervisor", class: "form-check-input" %>
+        <%= f.label :role, "Supervisor", class: "form-check-label" %>
+        <%= f.radio_button :role, "admin", class: "form-check-input" %>
+        <%= f.label :role, "Administrador", class: "form-check-label" %>
+    </div>
+
+    <div class="justify-content-center d-flex">
+        <%= f.submit "Salvar", class: "btn btn-primary" %>
+    </div>
+<% end %>

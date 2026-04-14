@@ -1,9 +1,9 @@
 module RoomsHelper
   def occupancy_status_class(status)
     case status
-    when "available"
+    when "vago"
       "table-success"
-    when "occupied"
+    when "ocupado"
       "table-danger"
     when "bloqueado"
       "table-warning"

@@ -3,18 +3,31 @@
 </div>
 
 
-
+<% if current_user.role == "admin" || current_user.role == "supervisor" %>
+<ul class="nav justify-content-center">
+  <li class="nav-item">
+    <%= link_to "Adicionar Quarto", new_room_path, class: "nav-link active", data: { turbo_frame: "new_edit_room", "aria-current" => "page" } %>
+  </li>
+  <li class="nav-item">
+    <%= link_to "Quartos", rooms_path, class: "nav-link active", data: { turbo_frame: "new_edit_room", "aria-current" => "page" } %>
+  </li>
+</ul>
+<%end%>
 <div class="card m-3 bg-light shadow">
   <div class="card-body">
+    <%= turbo_frame_tag "new_edit_room" do %>
     <p class="d-inline-flex gap-1">
-      <a class="btn btn-primary" data-bs-toggle="collapse" href="#quartos" role="button" >
+      <a class="btn btn-primary" data-bs-toggle="collapse" href="#rooms" role="button" >
         Quartos
       </a>
-      <a class="btn btn-primary" data-bs-toggle="collapse" href="#governanca" role="button">
+      <a class="btn btn-primary" data-bs-toggle="collapse" href="#housekeeping_status" role="button">
         Governança
       </a>
+      <a class="btn btn-primary" data-bs-toggle="collapse" href="#occupancy_status" role="button">
+        Ocupação
+      </a>
     </p>
-    <div class="collapse" id="quartos">
+    <div class="collapse" id="rooms">
       <div class="card">
           <div class="btn-group" role="group" aria-label="Basic example">
             <%= link_to "Todos", rooms_path, class: "btn btn-primary" %>
@@ -23,13 +36,23 @@
           </div>
       </div>
     </div>
-    <div class="collapse" id="governanca">
+    <div class="collapse" id="housekeeping_status">
       <div class="card">
           <div class="btn-group" role="group" aria-label="Basic example">
             <%= link_to "Todos", rooms_path, class: "btn btn-primary" %>
             <%= link_to "sujo", rooms_path(housekeeping_status: "sujo"), class: "btn btn-primary" %>
             <%= link_to "limpo", rooms_path(housekeeping_status: "limpo"), class: "btn btn-primary" %>
             <%= link_to "liberado", rooms_path(housekeeping_status: "liberado"), class: "btn btn-primary" %>
+          </div>
+      </div>
+    </div>
+    <div class="collapse" id="occupancy_status">
+      <div class="card">
+          <div class="btn-group" role="group" aria-label="Basic example">
+            <%= link_to "Todos", rooms_path, class: "btn btn-primary" %>
+            <%= link_to "vago", rooms_path(occupancy_status: "vago"), class: "btn btn-primary" %>
+            <%= link_to "ocupado", rooms_path(occupancy_status: "ocupado"), class: "btn btn-primary" %>
+            <%= link_to "bloqueado", rooms_path(occupancy_status: "bloqueado"), class: "btn btn-primary" %>
           </div>
       </div>
     </div>
@@ -56,6 +79,7 @@
         <% end %>
       </tbody>
     </table>
+    <%end%>
   </div>
 </div>
 

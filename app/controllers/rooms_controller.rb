@@ -1,5 +1,6 @@
 class RoomsController < ApplicationController
   before_action :authenticate_user!
+  before_action :require_turbo_frame, only: [ :edit, :update, :new, :create ]
 
   def index
     authorize :room

@@ -1,0 +1,38 @@
+<h1 class="text-center">Usuários</h1>
+
+<ul class="nav justify-content-center">
+    <li class="nav-item">
+        <%= link_to "Novo Usuário", new_admin_user_path, class: "nav-link active", data: { turbo_frame: "user_form", "aria-current" => "page" } %>
+    </li>
+    <li class="nav-item">
+        <%= link_to "Procurar Usuarios", admin_users_path, class: "nav-link active", data: { turbo_frame: "user_form", "aria-current" => "page" } %>
+    </li>
+</ul>
+
+<%= turbo_frame_tag "user_form" do %>
+<div class="card m-3 radius-0 shadow">
+    <div class="card-body">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Email</th>
+                    <th>Cargo</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% @users.each do |user| %>
+                    <tr>
+                        <td><%= user.email %></td>
+                        <td><%= user.role.capitalize %></td>
+                        <td>
+                            <%= link_to "Editar", edit_admin_user_path(user), class: "btn btn-sm btn-primary" %>
+                            <%= link_to "Excluir", admin_user_path(user), method: :delete, data: { confirm: "Tem certeza?" }, class: "btn btn-sm btn-danger" %>
+                        </td>
+                    </tr>
+                <% end %>
+            </tbody>
+        </table>
+    </div>
+</div>
+<% end %>

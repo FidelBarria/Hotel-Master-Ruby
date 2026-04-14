@@ -22,6 +22,19 @@ class ApplicationController < ActionController::Base
 
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
+    def require_turbo_frame
+      unless turbo_frame_request?
+        redirect_to rooms_path, alert: "Acesso não autorizado" and return
+      end
+    end
+
+  def require_turbo_stream
+    # Verifica se o Accept header contém turbo-stream
+    unless request.format == :turbo_stream
+      redirect_to rooms_path, alert: "Acesso não autorizado" and return
+    end
+  end
+
   private
 
   def user_not_authorized
