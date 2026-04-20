@@ -3,17 +3,14 @@ class Admin::UsersController < ApplicationController
   before_action :check_if_admin_or_supervisor
 
   def index
-    authorize :users
     @users = current_user.hotel.user
   end
 
   def new
-    authorize :users
     @user = User.new
   end
 
   def create
-    authorize :users
     @user = User.new(user_params)
     if @user.save
       redirect_to admin_users_path, notice: "Usuário criado com sucesso."
@@ -22,6 +19,18 @@ class Admin::UsersController < ApplicationController
     end
   end
 
+  def edit
+    @user = User.find(params[:id])
+  end
+
+  def update
+    @user = User.find(params[:id])
+    if @user.update(user_params)
+      redirect_to admin_users_path, notice: "Usuário atualizado com sucesso."
+    else
+      render :edit
+    end
+  end
 
   private
 

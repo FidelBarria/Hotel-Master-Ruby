@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   root "home#index"
 
-  resources :dashboard
+  resources :dashboard, only: [ :index ]
   resources :hotels do
     resources :users, only: [ :new, :create ]
   end
