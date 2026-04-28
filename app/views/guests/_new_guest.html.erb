@@ -1,0 +1,48 @@
+<%= form_with(model: [hotel, guest], local: true) do |form| %>
+  <div class="mb-3">
+    <%= form.label :name, "Nome" %>
+    <%= form.text_field :name, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :last_name, "Sobrenome" %>
+    <%= form.text_field :last_name, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :phone, "Telefone" %>
+    <%= form.text_field :phone, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :cpf, "CPF" %>
+    <%= form.text_field :cpf, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :email, "Email" %>
+    <%= form.email_field :email, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :zip_code, "CEP" %>
+    <%= form.text_field :zip_code, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :address, "Endereço" %>
+    <%= form.text_field :address, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :city, "Cidade" %>
+    <%= form.text_field :city, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :state, "Estado" %>
+    <%= form.text_field :state, class: "form-control" %>
+  </div>
+
+  <%= form.submit "Criar Hóspede", class: "btn btn-primary" %>
+<% end %>

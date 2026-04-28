@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get "pages/reception"
   devise_for :users, controllers: {
         sessions: "users/sessions"
       }
@@ -12,11 +13,11 @@ Rails.application.routes.draw do
   resources :dashboard, only: [ :index ]
   resources :hotels do
     resources :users, only: [ :new, :create ]
+    resources :reservations
+    resources :guests
   end
   resources :rooms
-  resources :reservations
   resources :payments
-  resources :guests
   resources :configurations
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

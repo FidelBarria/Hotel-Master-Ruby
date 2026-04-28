@@ -1,0 +1,20 @@
+
+<div class="flash">
+</div>
+
+
+<ul class="nav justify-content-center">
+  <li class="nav-item">
+    <%= link_to "Ficha de Hóspede", hotel_guests_path(@hotel), class: "nav-link active", data: { turbo_frame: "reception_page", "aria-current" => "page" } %>
+  </li>
+  <li class="nav-item">
+    <%= link_to "Novo Hóspede", new_hotel_guest_path(@hotel), class: "nav-link active", data: { turbo_frame: "reception_page", "aria-current" => "page" } %>
+  </li>
+</ul>
+
+<div class="card m-3 bg-light shadow">
+  <div class="card-body">
+    <%= turbo_frame_tag "reception_page" do %>
+    <% end %>
+  </div>
+</div>

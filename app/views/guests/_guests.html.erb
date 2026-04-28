@@ -1,0 +1,35 @@
+<table class="table table-striped">
+  <thead>
+    <tr class="table">
+      <th>Nome</th>
+      <th>Sobrenome</th>
+      <th>Telefone</th>
+      <th>CPF</th>
+      <th>Email</th>
+      <th>CEP</th>
+      <th>Endereço</th>
+      <th>Cidade</th>
+      <th>Estado</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @guests.each do |guest| %>
+      <tr>
+        <td><%= guest.name %></td>
+        <td><%= guest.last_name %></td>
+        <td><%= guest.phone %></td>
+        <td><%= guest.cpf %></td>
+        <td><%= guest.email %></td>
+        <td><%= guest.zip_code %></td>
+        <td><%= guest.address %></td>
+        <td><%= guest.city %></td>
+        <td><%= guest.state %></td>
+        <td>
+          <%= link_to "Editar", edit_guest_path(guest), class: "btn btn-sm btn-outline-primary" %>
+          <%= link_to "Excluir", guest_path(guest), method: :delete, confirm: "Tem certeza?", class: "btn btn-sm btn-outline-danger" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

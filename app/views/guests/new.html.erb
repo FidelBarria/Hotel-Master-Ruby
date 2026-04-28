@@ -1,0 +1,4 @@
+<%= turbo_frame_tag "reception_page" do %>
+<h1>Novo Hóspede</h1>
+<%= render "new_guest", locals: { hotel: @hotel, guest: @guest }  %>
+<% end %>
